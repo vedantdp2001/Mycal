@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my_calculator.com</title>
+    <style>
+        .calculator {
+
+            width: fit-content;
+            margin: auto;
+            border: 1.5px solid black;
+            padding: 10px 10px;
+            margin-top: 70px;
+            border-radius: 20px;
+            background-color: rgb(189, 189, 189);
+
+        }
+
+        table {
+            margin: auto;
+        }
+
+        button {
+            border-radius: 10px;
+            font-size: 20px;
+            /* background: #978fa0; */
+            border: 1.5px solid black;
+            width: 70px;
+            height: 50px;
+            margin: 4px;
+            margin-bottom: 7px;
+            background-color: white;
+        }
+        input{
+            width:310px;
+            margin: 20px 40px;
+            height: 50px;
+            border: 1.5px solid black;
+            border-radius: 10px;
+            font-size: 30px;
+            
+        }
+        p{
+            font-size: 30px;
+            font-family:cursive;
+            margin: 0px 40px;
+            margin-top: 7px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <p>calculator</p>
+        <input type="text" name="screen" id="screen">
+        <table>
+            <tr>
+                <td><button>(</button></td>
+                <td><button>)</button></td>
+                <td><button>C</button></td>
+                <td><button>%</button></td>
+            </tr>
+            <tr>
+                <td><button>7</button></td>
+                <td><button>8</button></td>
+                <td><button>9</button></td>
+                <td><button>X</button></td>
+            </tr>
+            <tr>
+                <td><button>4</button></td>
+                <td><button>5</button></td>
+                <td><button>6</button></td>
+                <td><button>-</button></td>
+            </tr>
+            <tr>
+                <td><button>1</button></td>
+                <td><button>2</button></td>
+                <td><button>3</button></td>
+                <td><button>+</button></td>
+            </tr>
+            <tr>
+                <td><button>0</button></td>
+                <td><button>.</button></td>
+                <td><button>/</button></td>
+                <td><button style="background-color: rgb(247, 191, 107); color: white;">=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let screen = document.getElementById('screen');
+        let buttons = document.querySelectorAll('button');
+        let scval="";
+
+        for(item of buttons){
+            item.addEventListener('click',(e)=>{
+                btext= e.target.innerText;
+                console.log('btext is ', btext)
+                // screen.value=btext;
+                if(btext == 'X')
+                {
+                    btext = '*';
+                    scval += btext;
+                    screen.value = scval;
+                }
+                else if(btext=='C'){
+                    scval="";
+                    screen.value=scval;
+                    
+                }
+                else if (btext=='='){
+                    screen.value=eval(scval);
+                }
+                else{
+                    scval+=btext;
+                    screen.value=scval;
+                }
+               
+
+            })
+        }
+
+    </script>
+</body>
+
+</html>
